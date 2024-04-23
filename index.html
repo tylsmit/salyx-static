@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salyx Health</title>
+</head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+<style>
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  body {
+    background-image: linear-gradient(rgba(89, 188, 185, .35) 0%, rgba(172, 220, 213, .13) 54%, rgba(40, 168, 168, .49) 93%);
+    font-family: Outfit, sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 0;
+  }
+
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .flex-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .page-container {
+    padding: 48px 24px;
+    text-align: center;
+
+    gap: 48px;
+  }
+
+  .text-container {
+    max-width: 1100px;
+  }
+
+  .text-container p {
+    color: #000;
+    font-family: Inter, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 150%;
+  }
+
+  .text-container h1 {
+    font-size: 56px;
+    margin: 0;
+  }
+
+  a.button {
+    color: white;
+    text-transform: uppercase;
+    background-color: #143f5d;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 31px;
+    padding: 12px 24px;
+  }
+
+  .image-30 {
+    object-fit: cover;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1300px;
+    height: 440px;
+    display: flex;
+  }
+
+  @media screen and (max-width: 479px) {
+    .image-30 {
+      height: 75vw;
+    }
+
+    .page-container {
+      padding: 24px 18px;
+    }
+
+    .text-container h1 {
+      font-size: 36px;
+    }
+
+    .search-card h2 {
+      font-size: 20px !important;
+    }
+
+    #search-icon {
+      height: 32px !important;
+      width: 32px !important;
+    }
+
+    .search-card {
+      padding: 12px 12px !important;
+      border-radius: 40px;
+    }
+  }
+
+  .search-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 24px;
+    gap: 12px;
+
+    width: 100%;
+    max-width: 1074px;
+    border-radius: 32px;
+
+    border: 1px solid #143f5d;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+  }
+
+  .search-card h2 {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 120%;
+  }
+
+  .card-row {
+    justify-content: space-evenly;
+    gap: 48px;
+    max-width: 1200px;
+  }
+
+  @media screen and (max-width: 940px) {
+    .card-row {
+      flex-direction: column;
+    }
+
+    .info-card {
+      max-width: 312px;
+      height: 280px;
+    }
+  }
+
+  #search-icon {
+    width: 43px;
+    height: 43px;
+  }
+
+  .info-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 24px;
+    border-radius: 8px;
+    height: 312px;
+    background-color: rgba(255, 255, 255, .2);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+  }
+
+  .info-card h4 {
+    text-align: center;
+    font-family: Inter, sans-serif;
+    font-size: 24px;
+    margin: 0;
+    font-weight: 600;
+    line-height: 150%;
+  }
+
+  .info-card p {
+    color: #000;
+    margin: 0;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+  }
+
+
+
+  .partner-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 48px;
+
+    flex-wrap: wrap;
+
+    padding: 64px 24px;
+  }
+
+  .partner-card h2 {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 120%;
+  }
+
+  .partner-card div {
+    gap: 24px;
+    max-width: 600px;
+  }
+
+  .features {
+    max-width: 1100px;
+
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  #steth-img {
+    max-width: calc(min(70vw, 330px));
+  }
+
+  .features p {
+    color: #000;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+  }
+
+  .features-desc {
+    max-width: 440px;
+    padding: 0 16px;
+  }
+
+  .features-desc h5 {
+    font-family: Inter, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 150%;
+
+    margin: 0;
+  }
+
+  .features-checklist {
+    max-width: 440px;
+    padding: 0 16px;
+  }
+
+  .features-checklist div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .contact-container {
+    width: 100%;
+    gap: 48px;
+    padding: 48px 0;
+
+    justify-content: center !important;
+    flex-wrap: wrap;
+  }
+
+  .contact-info {
+    max-width: 450px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+  }
+
+  .contact-info h2 {
+    margin: 0;
+    padding: 0 16px;
+  }
+
+  .contact-form {
+    border-radius: 15px;
+    background-color: white;
+    padding: 24px 40px;
+    max-width: 445px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .contact-form label {
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .contact-form input[type=text],
+  .contact-form input[type=tel] {
+    font-size: 24px;
+    padding: 8px 4px;
+
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+  }
+
+  .contact-form input[type=submit] {
+    color: white;
+    background-color: #143f5d;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 31px;
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  #footer {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    margin: 0;
+    padding: 24px;
+
+    gap: 8px;
+  }
+
+  #footer * {
+    margin: 0;
+  }
+
+  #footer h5 {
+    font-size: 23px;
+  }
+
+  #footer h6 {
+    font-size: 14px;
+  }
+
+  #footer p {
+    color: #666;
+  }
+
+  #copyright {
+    margin-top: 24px;
+    color: #777;
+  }
+</style>
+
+<body>
+  <div class="flex-col page-container">
+    <img src="https://assets-global.website-files.com/65406c58f5061b2008d962cf/65d7d7da5e74ad81267b408d_Image.png"
+      loading="lazy" width="304" height="187" alt=""
+      srcset="https://assets-global.website-files.com/65406c58f5061b2008d962cf/65d7d7da5e74ad81267b408d_Image-p-500.png 500w, https://assets-global.website-files.com/65406c58f5061b2008d962cf/65d7d7da5e74ad81267b408d_Image-p-800.png 800w, https://assets-global.website-files.com/65406c58f5061b2008d962cf/65d7d7da5e74ad81267b408d_Image-p-1080.png 1080w, https://assets-global.website-files.com/65406c58f5061b2008d962cf/65d7d7da5e74ad81267b408d_Image.png 1382w"
+      sizes="(max-width: 479px) 95vw, (max-width: 767px) 87vw, (max-width: 991px) 90vw, 93vw" class="image-30">
+    <div class="text-container flex-col">
+      <h1>Redefining Healthcare Innovation</h1>
+      <p>At Salyx Health, we're dedicated to revolutionizing the medical sector through innovative software solutions.
+        Our
+        mission is to streamline operations, enhance patient care, and drive efficiency for healthcare providers
+        worldwide.</p>
+    </div>
+    <a href="#" class="button" id="contact">Contact Us</a>
+  </div>
+
+  <div class="flex-col page-container">
+    <div class="search-card">
+      <img src="https://assets-global.website-files.com/65406c58f5061b2008d962cf/65d7d8cb39f4ebde16b39d1d_Search.png"
+        loading="lazy" id="search-icon" alt="Search Icon">
+      <h2>Why Choose Salyx Health?</h2>
+    </div>
+    <div class="flex-row card-row">
+      <div class="info-card">
+        <h4>Reliability</h4>
+        <p>Trust in a proven track record of delivering robust, reliable software solutions tailored to the unique needs
+          of the medical sector.</p>
+      </div>
+      <div class="info-card">
+        <h4>Security</h4>
+        <p>Protect sensitive patient information with our state-of-the-art security measures, ensuring compliance with
+          industry regulations and standards.</p>
+      </div>
+      <div class="info-card">
+        <h4>Scalability</h4>
+        <p>Whether you're a small clinic or a large healthcare organization, our scalable solutions grow with your
+          business, adapting to your evolving needs.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="partner-card">
+    <div class="flex-col">
+      <h2>Partner with Salyx Health to innovate healthcare. Explore partnerships and enhance patient care.</h2>
+      <a href="#" class="button" id="contact">Contact Us</a>
+    </div>
+    <img src="https://assets-global.website-files.com/65406c58f5061b2008d962cf/65d7d7dc473ae0d40d998d60_Image.png"
+      loading="lazy" width="320" height="316" alt="" class="image-31">
+  </div>
+
+  <div class="features flex-row">
+    <div class="features-desc">
+      <h5>Features section</h5>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt sagittis eros. Quisque quis
+        euismod lorem. Etiam sodales ac felis id interdum.</p>
+    </div>
+    <div class="features-checklist flex-col">
+      <div class="flex-row">
+        <img
+          src="https://assets-global.website-files.com/65406c58f5061b2008d962cf/65d7d7dcf3ad6ad019ecc651_Vectors-Wrapper.svg"
+          loading="lazy" width="24" height="24" alt="" class="vectors-wrapper-4">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt sagittis eros.</p>
+      </div>
+      <div class="flex-row">
+        <img
+          src="https://assets-global.website-files.com/65406c58f5061b2008d962cf/65d7d7dcf3ad6ad019ecc651_Vectors-Wrapper.svg"
+          loading="lazy" width="24" height="24" alt="" class="vectors-wrapper-4">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt sagittis eros.</p>
+      </div>
+      <div class="flex-row">
+        <img
+          src="https://assets-global.website-files.com/65406c58f5061b2008d962cf/65d7d7dcf3ad6ad019ecc651_Vectors-Wrapper.svg"
+          loading="lazy" width="24" height="24" alt="" class="vectors-wrapper-4">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt sagittis eros.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-container flex-row">
+    <div class="contact-info">
+      <h2>Ready to transform your healthcare practice? Get in touch with us today</h2>
+      <img id="steth-img"
+        src="https://assets-global.website-files.com/65406c58f5061b2008d962cf/65e2176a1d3ee4b9b4b91de8_Esteto.png"
+        loading="lazy" alt="Stethoscope">
+    </div>
+    <form class="contact-form" action="/action_page.php">
+      <label for="name">Full name</label>
+      <input type="text" id="fname" name="name" value="">
+      <label for="email">Business email</label>
+      <input type="text" id="femail" name="email" value="">
+      <label for="phone">Phone</label>
+      <input type="tel" id="fphone" name="phone" value="">
+      <label for="org">Organization name</label>
+      <input type="text" id="forg" name="org" value="">
+      <input type="submit" value="Get in touch!">
+    </form>
+  </div>
+
+  <div id="footer">
+    <h5>Salyx Health Inc.</h5>
+
+    <h6>Contact Information</h6>
+    <p>marketing@salyxhealth.com</p>
+    <p>+1 818 660 1404</p>
+    <p>Address.</p>
+
+    <p id="copyright">Copyright © 2024 Salyx Health Inc.</p>
+
+  </div>
+</body>
+
+</html>
+
+
+<!-- Inserted by Reload -->
+<script src="/reload/reload.js"></script>
+<!-- End Reload -->
